@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Personas</title>
+<!-- Bootstrap CSS -->
+<link href="../static/css/bootstrap.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+	<div class="container">
+		<br>
+		<h2>Agregar Persona</h2>
+		<form action="#" th:action="@{/save}" th:object="${persona}" method="post">
+			<input type="hidden" th:field="*{idPersona}" name="idPersona" id="id">
+			<div class="form-group">
+				<label for="nombre">Nombre</label> <input type="text"
+					class="form-control" id="nombre" th:field="*{nombre}" name="nombre">
+			</div>
+			<div class="form-group">
+				<label for="nombre">Clave</label> <input type="password"
+					class="form-control" id="clave" th:field="*{clave}" name="clave">
+			</div>
+
+			<div class="form-group">
+				<label for="nombre">Edad</label> <input type="text"
+					class="form-control" id="edad" th:field="*{edad}" name="edad">
+			</div>
+
+			<div class="form-group">
+				<label for="nombre">Zona</label> <input type="text"
+					class="form-control" id="zona" th:field="*{zona}" name="zona">
+			</div>
+			<button type="submit" class="btn btn-success">Guardar</button>
+
+		<br>
+		<div>
+			<br> <a class="btn btn-dark" href="/indexPersona">Cancelar</a>
+
+		</div>
+
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Libro</title>
+<!-- Bootstrap CSS -->
+<link href="../static/css/bootstrap.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+	<div class="container">
+		<br>
+		<h1 th:if="${listLi.isEmpty()}">No existen libros registradas</h1>
+		<div th:if="${!listLi.isEmpty()}">
+			<h2>Libros</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Portada</th>
+						<th>Categoria edad</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="libro : ${listLi}">
+						<td th:text="${libro.nombre}">
+						<td th:text="${libro.portada}">
+						<td th:text="${libro.catEdad}">
+						<td><a class="btn btn-success"
+							th:href="@{/saveLi/{id}(id=${libro.idLibro})}">Editar</a></td>
+						<td><a class="btn btn-danger"
+							th:href="@{/deleteLi/{id}(id=${libro.idLibro})}">Eliminar</a></td>
+					</tr>
+
+
+
+
+				</tbody>
+			</table>
+			<br>
+			<br>
+			<h3>Total libros prestados</h3>
+			<br>
+			<div th:text="${countLibros}"></div>
+		</div>
+		<br>
+		<div>
+			<a href="/saveLi/0" class="btn btn-primary">Agregar</a>
+		</div>
+		<br>
+		<div>
+			<br> <a class="btn btn-dark" href="/">Regresar</a>
+
+		</div>
+
+	</div>
+
+</body>
+</html>

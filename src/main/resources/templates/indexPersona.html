@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Persona</title>
+<!-- Bootstrap CSS -->
+<link href="../static/css/bootstrap.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+	<div class="container">
+		<br>
+		<h1 th:if="${listPer.isEmpty()}">No existen personas registradas</h1>
+		<div th:if="${!listPer.isEmpty()}">
+			<h2>Personas</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Nombre</th>
+						<th>Edad</th>
+						<th>Zona</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="persona : ${listPer}">
+						<td th:text="${persona.nombre}">
+						<td th:text="${persona.edad}">
+						<td th:text="${persona.zona}">
+						<td><a class="btn btn-success"
+							th:href="@{/save/{id}(id=${persona.idPersona})}">Editar</a></td>
+						<td><a class="btn btn-danger"
+							th:href="@{/delete/{id}(id=${persona.idPersona})}">Eliminar</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div>
+			<a href="/save/0" class="btn btn-primary">Agregar</a>
+		</div>
+		<br>
+		<div>
+			<br> <a class="btn btn-dark" href="/">Regresar</a>
+
+		</div>
+
+	</div>
+</body>
+</html>

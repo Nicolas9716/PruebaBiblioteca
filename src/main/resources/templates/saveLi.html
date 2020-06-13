@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Libros</title>
+<!-- Bootstrap CSS -->
+<link href="../static/css/bootstrap.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+	<div class="container">
+		<br>
+		<h2>Agregar Libro</h2>
+		<form action="#" th:action="@{/saveLi}" th:object="${libro}"
+			method="post">
+			<input type="hidden" th:field="*{idLibro}" name="idLibro" id="id">
+			<div class="form-group">
+				<label for="nombre">Nombre</label> <input type="text"
+					class="form-control" id="nombre" th:field="*{nombre}" name="nombre">
+			</div>
+			<div class="form-group">
+				<label for="nombre">Portada</label> <input type="text"
+					class="form-control" id="portada" th:field="*{portada}"
+					name="portada">
+			</div>
+
+			<div class="form-group">
+				<label for="nombre">Categoria</label> <input type="text"
+					class="form-control" id="catEdad" th:field="*{catEdad}"
+					name="catEdad">
+			</div>
+
+			<button type="submit" class="btn btn-success">Guardar</button>
+			<br>
+			<div>
+				<br> <a class="btn btn-dark" href="/indexLibro">Cancelar</a>
+
+			</div>
+
+
+		</form>
+	</div>
+</body>
+</html>

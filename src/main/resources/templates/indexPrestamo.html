@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Prestamo</title>
+<!-- Bootstrap CSS -->
+<link href="../static/css/bootstrap.css" rel="stylesheet"
+	th:href="@{/css/bootstrap.css}">
+</head>
+<body>
+	<div class="container">
+		<br>
+		<h1 th:if="${listPre.isEmpty()}">No existen prestamos registradas</h1>
+		<div th:if="${!listPre.isEmpty()}">
+			<h2>Prestamo</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Persona</th>
+						<th>Libro</th>
+						<th>Fecha prestamo</th>
+						<th>Dias prestado</th>
+						<th></th>
+						<th></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="prestamo : ${listPre}">
+						<td th:text="${prestamo.idPersona.getNombre()}">
+						<td th:text="${prestamo.idLibro.getNombre()}">
+						<td th:text="${prestamo.fecha}">
+						<td th:text="${prestamo.diasPrestado}">
+						<td><a class="btn btn-success" th:href="@{/savePre/{id}(id=${prestamo.idPrestamo})}">Editar</a></td>
+						<td><a class="btn btn-danger" th:href="@{/deletePre/{id}(id=${prestamo.idPrestamo})}">Eliminar</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div>
+			<a href="/savePre/0" class="btn btn-primary">Agregar</a>
+		</div>
+				<br>
+		<div>
+			<br> <a class="btn btn-dark" href="/">Regresar</a>
+
+		</div>
+		
+		
+	</div>
+</body>
+</html>
